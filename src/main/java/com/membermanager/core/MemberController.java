@@ -20,6 +20,16 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
 
+    @RequestMapping(value = {"/ping", "/Ping"}, method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity ping()
+            throws IOException, ExecutionException, InterruptedException {
+        LOGGER.info("Testing the endpoint");
+
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body("PONG");
+
+    }
+
     @RequestMapping(value = {"/member", "/Member"}, method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity getAllMembers()
